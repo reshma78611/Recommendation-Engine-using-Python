@@ -9,6 +9,7 @@ import pandas as pd
 
 movie_rating_data=pd.read_csv('C:/Users/HP/Desktop/datasets/Movie.csv')
 movie_rating_data.head(5)
+sorted_data=np.sort(movie_rating_data.userId)
 
 #no of unique users in dataset
 len(movie_rating_data.userId.unique())
@@ -17,7 +18,7 @@ len(movie_rating_data.userId.unique())
 len(movie_rating_data.movie.unique())
 
 #build a matrix
-movie_rating_data_matrix=movie_rating_data.pivot(index='userId',columns='movie',values='rating').reset_index(drop=True)
+movie_rating_data_matrix=movie_rating_data.pivot_table(index='userId',columns='movie',values='rating').reset_index(drop=True)
 movie_rating_data_matrix
 
 #replacing index values with userid
